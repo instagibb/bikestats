@@ -1,0 +1,14 @@
+{
+	"ecmaFeatures": { 
+		"modules": true 
+	},
+  "extends": ["rackt"],
+  "rules": {
+  	"react/jsx-uses-react": 1,
+  	"react/jsx-no-undef": 2,
+  	"react/wrap-multilines": 2,
+    "no-console": 1,
+    "semi": [2, "always"]
+  },
+  "plugins": ["react"]
+}

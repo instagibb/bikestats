@@ -1,0 +1,8 @@
+/node_modules
+npm-debug.log
+/.idea
+/data/
+/public/
+/app/
+
+.DS_Store
