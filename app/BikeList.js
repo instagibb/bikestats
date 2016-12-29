@@ -35,18 +35,14 @@ export default class BikeList extends Component {
     });
 
     doRequest(req, (athlete) => {
-      console.log(athlete);
       this.getActivities(athlete);
     });
   }
   getActivities(athlete) {
     console.log('Retrieving bikes...');
-    // Default start dates
     const activities = [];
     let start = moment.utc().startOf('year').unix();
     let end = moment.utc().endOf('year').unix();
-    console.log(start);
-    console.log(end);
     this.getAllTheActivities(athlete, activities, start, end, 1);
   }
  

@@ -8,6 +8,7 @@ export default class Bike extends Component {
     const rides = this.props.activities;
     const distances = rides.map((r) => r.distance);
     const mtimes = rides.map((r) => r.moving_time);
+    const avgspeeds = rides.map((r) => r.average_speed);
     const kudoses = rides.map((r) => r.kudos_count);
     const elevations = rides.map((r) => r.total_elevation_gain);
     const kms = Math.round(distances.reduce((a, b) => a + b, 0) / 1000);
@@ -16,6 +17,7 @@ export default class Bike extends Component {
     const avg = Math.round(kms / rides.length);
     const ele = Math.round(elevations.reduce((a, b) => a + b, 0));
     const time = Math.round(mtimes.reduce((a, b) => a + b, 0) / 60 / 60);
+    const avgspeed = Math.round(((avgspeeds.reduce((a, b) => a + b, 0) / rides.length) * 60 * 60 / 1000));
     const kudos = Math.round(kudoses.reduce((a, b) => a + b, 0));
     return (
       <ListGroupItem header={this.props.bike.name}>
@@ -26,6 +28,7 @@ export default class Bike extends Component {
         Longest ride: {max} KM<br/>
         Elevation: {ele} Meters<br/>
         Moving time: {time} Hours<br/>
+        Average Average speed: {avgspeed} KPH<br/>
         Kudos: {kudos}
       </ListGroupItem>
     );
