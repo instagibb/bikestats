@@ -51,12 +51,13 @@ export default class BikeList extends Component {
   }
  
   getAllTheActivities(athlete, activities, s, e, p) {
-    doRequest(requestBuilder({ url:`activities?after=${s}&before=${e}&per_page=200&page=${p}&access_token=${athlete.access_token}` }),
+    const pagesize = 200;
+    doRequest(requestBuilder({ url:`activities?after=${s}&before=${e}&per_page=${pagesize}&page=${p}&access_token=${athlete.access_token}` }),
     (acts) => {
       activities = activities.concat(acts);
-      if(acts.length == 200) {
+      if(acts.length == pagesize) {
         console.log(`Retrieving page: ${p} of activities`);
-        this.getAllTheEfforts(activities, s, e, ++p);
+        this.getAllTheActivities(athlete, activities, s, e, ++p);
       }
       else {
         console.log('All activities retrieved. Splitting by gear id');
