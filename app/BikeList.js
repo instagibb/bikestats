@@ -35,6 +35,7 @@ export default class BikeList extends Component {
     });
 
     doRequest(req, (athlete) => {
+      console.log(`Athlete token: ${athlete.access_token}`);
       this.getActivities(athlete);
     });
   }
