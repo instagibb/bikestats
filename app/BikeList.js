@@ -8,6 +8,7 @@ import FontAwesome from 'react-fontawesome';
 import pwrd from './images/pwrd_by_strava.png';
 import authz from './images/auth_with_strava.png';
 import moment from 'moment';
+import appConstants from './constants/appConstants';
 
 export default class BikeList extends Component {
   constructor(props) {
@@ -120,7 +121,7 @@ export default class BikeList extends Component {
         header = `${this.state.athlete.athlete.firstname} ${this.state.athlete.athlete.lastname} - `;
       }
       else {
-        content = (<div className="connect"><FontAwesome
+        content = (<div className="connecting"><FontAwesome
           name="spinner"
           size="2x"
           spin
@@ -129,7 +130,9 @@ export default class BikeList extends Component {
       }
     }
     else {
-      content = (<div className="connecting"><a href="https://www.strava.com/oauth/authorize?client_id=7868&response_type=code&redirect_uri=http://localhost:8000&approval_prompt=auto&state=strava_auth"><img className="authz" src={authz} /></a></div>);
+      const site = appConstants.site;
+      const url = `https://www.strava.com/oauth/authorize?client_id=7868&response_type=code&redirect_uri=${site}&approval_prompt=auto&state=strava_auth`;
+      content = (<div className="connect"><a href={url}><img className="authz" src={authz} /></a></div>);
     }
     const hs = '2016 Bike Statistics';
     header = header ? (header + hs) : hs;
