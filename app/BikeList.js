@@ -31,12 +31,7 @@ export default class BikeList extends Component {
     console.log('Authorizing... using code: ' + code);
     
     const req = requestBuilder({ 
-      url:`${appConstants.auth}/oauth/token`, 
-      method: 'post',
-      headers: {
-        'content-type': 'application/json'
-      },
-      data: { code: code } 
+      url:`${appConstants.auth}/oauth/token?code=${code}`
     });
 
     doRequest(req, (athlete) => {

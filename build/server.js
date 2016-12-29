@@ -32,7 +32,7 @@ authproxy.use(function(req, res, next) {
     request.post( { url: `https://www.strava.com/${req.url}`, form: {
         client_id: strava_config.client_id,
         client_secret: strava_config.client_secret,
-        code: req.body.code
+        code: req.query.code
       } 
     }).pipe(res);
   }
