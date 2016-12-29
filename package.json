@@ -39,6 +39,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "bootswatch": "^3.3.7",
+    "font-awesome": "^4.7.0",
     "lodash": "^4.15.0",
     "react": "^15.3.0",
     "react-bootstrap": "^0.30.5",
