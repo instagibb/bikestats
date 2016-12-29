@@ -3,6 +3,6 @@ npm-debug.log
 /.idea
 /data/
 /public/
-/app/
+/app/constants/appConstants.js
 
 .DS_Store

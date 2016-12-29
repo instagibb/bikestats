@@ -45,7 +45,7 @@ module.exports = function (options) {
       loader: 'url-loader?limit=10000&mimetype=application/font-woff'
     },
     {
-      test: /\.(ttf|eot|svg|png|jpeg|jpg|gif|ico)$/, 
+      test: /\.(ttf|eot|svg|png|jpeg|jpg|gif|ico|woff|woff2)(\?.*$|$)/, 
       loader: 'file-loader'
     }
   ]

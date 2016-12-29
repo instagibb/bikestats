@@ -1,0 +1,21 @@
+
+.content {
+	width: 400px;
+	margin: auto;
+	padding: 25px 10px	
+}
+
+.pwrd {
+	margin: auto;
+	width: 175px;
+	display: block;
+}
+
+.panel-info > .panel-heading {
+	background-color: rgb(246, 86, 36);
+}
+
+.connect {
+	margin: auto;
+	width: 193px;
+}
