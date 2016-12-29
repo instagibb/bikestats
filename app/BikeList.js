@@ -31,7 +31,7 @@ export default class BikeList extends Component {
     console.log('Authorizing... using code: ' + code);
     
     const req = requestBuilder({ 
-      url:'http://0.0.0.0:8002/oauth/token', 
+      url:`${appConstants.auth}/oauth/token`, 
       method: 'post',
       headers: {
         'content-type': 'application/json'
