@@ -62,12 +62,10 @@ export default class BikeList extends Component {
         activities.map((a) => {
           const bikeId = a.gear_id;
           if(bikeId != null) {
-            if(splitActs[bikeId]) {
-              splitActs[bikeId].push(a);
-            }
-            else {
+            if(!splitActs[bikeId]) {
               splitActs[bikeId] = [];
             }
+            splitActs[bikeId].push(a);
           }
         });
 
