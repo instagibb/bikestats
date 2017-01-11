@@ -125,7 +125,8 @@ export default class BikeList extends Component {
       const url = `https://www.strava.com/oauth/authorize?client_id=7868&response_type=code&redirect_uri=${site}&approval_prompt=auto&state=strava_auth`;
       content = (<div className="connect"><a href={url}><img className="authz" src={authz} /></a></div>);
     }
-    const hs = '2016 Bike Statistics';
+
+    const hs = `${new Date().getFullYear()} Bike Statistics`;
     header = header ? (header + hs) : hs;
 
     return (
