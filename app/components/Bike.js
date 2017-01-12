@@ -22,7 +22,7 @@ export default class Bike extends Component {
       const avgspeed = Math.round(((avgspeeds.reduce((a, b) => a + b, 0) / rides.length) * 60 * 60 / 1000));
       const kudos = Math.round(kudoses.reduce((a, b) => a + b, 0));
 
-      content = (<div> 
+      content = (<span> 
         Activities: {rides.length}<br/>
         Total distance: {kms} KM<br/>
         Average distance: {avg} KM<br/>
@@ -32,10 +32,10 @@ export default class Bike extends Component {
         Moving time: {time} Hours<br/>
         Average Average speed: {avgspeed} KPH<br/>
         Kudos: {kudos}
-      </div>);
+      </span>);
     }
     else {
-      content = (<div>No activities for this bike/shoe... time to sell</div>);
+      content = (<span>No activities for this bike/shoe... time to sell</span>);
     }
     
     return (

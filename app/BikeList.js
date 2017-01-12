@@ -23,12 +23,12 @@ export default class BikeList extends Component {
       bikes: [],
       authorized: false,
       athlete: null,
-      year: moment.utc().year()
+      year: moment.utc().year(),
+      nodata: false
     };
-    for(let i=2000;i<2020;i++) {
+    for(let i=2000;i<=moment.utc().year();i++) {
       yearOpts.push({ value: i, label: `${i}` });
     }
-    console.log(yearOpts);
   }
   componentDidMount() {
     console.log('Mounted...checking auth');
