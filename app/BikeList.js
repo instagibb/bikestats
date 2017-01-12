@@ -9,16 +9,26 @@ import pwrd from './images/pwrd_by_strava.png';
 import authz from './images/auth_with_strava.png';
 import moment from 'moment';
 import appConstants from './constants/appConstants';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
+
+let yearOpts = [];
 
 export default class BikeList extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
       activities: [],
       bikes: [],
       authorized: false,
-      athlete: null
+      athlete: null,
+      year: moment.utc().year()
     };
+    for(let i=2000;i<2020;i++) {
+      yearOpts.push({ value: i, label: `${i}` });
+    }
+    console.log(yearOpts);
   }
   componentDidMount() {
     console.log('Mounted...checking auth');
@@ -42,11 +52,17 @@ export default class BikeList extends Component {
   getActivities(athlete) {
     console.log('Retrieving bikes...');
     const activities = [];
-    let start = moment.utc().startOf('year').unix();
-    let end = moment.utc().endOf('year').unix();
+    let start = moment.utc([ this.state.year ]).startOf('year').unix();
+    let end = moment.utc([ this.state.year ]).endOf('year').unix();
     this.getAllTheActivities(athlete, activities, start, end, 1);
   }
- 
+  yearSelected(year) {
+    this.setState({ 
+      activities: [],
+      bikes: [],
+      year: year.value
+    });
+  }
   getAllTheActivities(athlete, activities, s, e, p) {
     const pagesize = 200;
     doRequest(requestBuilder({ url:`activities?after=${s}&before=${e}&per_page=${pagesize}&page=${p}&access_token=${athlete.access_token}` }),
@@ -108,7 +124,7 @@ export default class BikeList extends Component {
     let header;
     if(this.state.authorized) {
       if(bikes) {
-        content = <ListGroup>{bikes}</ListGroup>;
+        content = (<div><Select className="year" value={this.state.year} options={yearOpts} onChange={(year) => { this.yearSelected(year); }} clearable={false} /><br/><ListGroup>{bikes}</ListGroup></div>);
         header = `${this.state.athlete.athlete.firstname} ${this.state.athlete.athlete.lastname} - `;
       }
       else {
@@ -126,7 +142,7 @@ export default class BikeList extends Component {
       content = (<div className="connect"><a href={url}><img className="authz" src={authz} /></a></div>);
     }
 
-    const hs = `${new Date().getFullYear()} Bike Statistics`;
+    const hs = `${this.state.year} Bike Statistics`;
     header = header ? (header + hs) : hs;
 
     return (
